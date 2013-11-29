@@ -1,0 +1,9 @@
+facebook4j.properties
+*.db
+grails-app/conf/priv/**
+target-eclipse
+target
+.classpath
+.settings
+.project
+/bin
