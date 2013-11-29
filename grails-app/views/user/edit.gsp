@@ -8,7 +8,7 @@
 		<r:require modules="angular_app"/>
 	</head>
 	<body>
-		<div class="container" ng-app="grailsTemplate" ng-controller="UserCtrl">
+		<div class="container" ng-app="gymlib" ng-controller="UserCtrl">
 			<div ng-cloak ng-repeat="alert in alerts" class="alert alert-{{alert.type}} alert-dismissable">
 				<button ng-click="closeAlert($index)" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 				{{alert.content}}
