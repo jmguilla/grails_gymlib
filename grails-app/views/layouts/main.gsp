@@ -70,8 +70,12 @@
 								data-toggle="dropdown" data-target="#" href="#"> <sec:username /><span
 									class="caret"></span>
 							</a>
-								<ul class="dropdown-menu" role="menu"
-									aria-labelledby="dropdownMenu">
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+									<sec:ifAllGranted roles="ROLE_CLUB_ADMIN">
+									<li role="presentation"><a role="menuitem" tabindex="-1"
+										href="${createLink( controller: "user", action: "clubs", id: springSecurityService.getCurrentUser().id)}"><g:message
+												code="gsp.landing.myclubs.label" default="My Clubs" /></a></li>
+									</sec:ifAllGranted>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="${createLink( controller: "user", action: "dashboard", id: springSecurityService.getCurrentUser().id)}"><g:message
 												code="gsp.landing.myaccount.label" default="My Account" /></a></li>

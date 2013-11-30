@@ -5,7 +5,6 @@ import com.jmguilla.oauth.FacebookUser
 class User {
 
   transient springSecurityService
-  transient authenticationService
 
   String sha1
   String email
@@ -25,6 +24,9 @@ class User {
   boolean passwordExpired = false
   //below oauth entities
   static hasOne = [fbUser:FacebookUser]
+  
+  //below app specific properties
+  static hasMany = [contents: Content, courses: Course]
 
   static constraints = {
     firstName(nullable: true, size: 1..64)
@@ -37,6 +39,8 @@ class User {
     signin(nullable: false)
     birthday(nullable: true)
     fbUser(nullable: true, unique: true)
+    contents(nullable: true)
+    courses(nullable: true)
   }
 
   static mapping = {

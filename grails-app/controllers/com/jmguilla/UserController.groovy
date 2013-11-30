@@ -45,22 +45,22 @@ class UserController {
       '*'{ response.sendError(404) }
     }
   }
-  
+
   @Secured(['ROLE_USER'])
   def dashboard(){
     [userInstance: User.get(params.id)]
   }
-  
+
   @Secured(['ROLE_USER'])
   def account(User userInstance){
     [userInstance: User.get(params.id)]
   }
-  
+
   @Secured(['ROLE_USER'])
   def show(User userInstance){
     [userInstance: User.get(params.id)]
   }
-  
+
   @Secured(['ROLE_USER'])
   def edit(User userInstance){
     if(!params.tab){
@@ -76,5 +76,14 @@ class UserController {
       json{ render(result as JSON) }
       xml{ render(result as XML) }
     }
+  }
+
+  @Secured(['ROLE_CLUB_ADMIN'])
+  def clubs(){
+    def user = springSecurityService.getCurrentUser()
+    render view: 'clubs', model: [
+      clubs: Club.findAll("from Club as c where owner = :owner or :admin in elements(c.admins)", [owner: user, admin: user]),
+      userInstance: user
+      ]
   }
 }

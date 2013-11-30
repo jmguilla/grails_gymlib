@@ -21,4 +21,9 @@ modules = {
     resource url:'js/app/controllers.js'
     resource url:'js/app/config.js'
   }
+  bootstrap_switch {
+    dependsOn 'bootstrap'
+    resource url: 'js/lib/bootstrap-switch/bootstrap-switch.css'
+    resource url: 'js/lib/bootstrap-switch/bootstrap-switch.js'
+  }
 }

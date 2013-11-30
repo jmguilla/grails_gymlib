@@ -23,37 +23,23 @@
 			<table>
 			<thead>
 					<tr>
-					
 						<g:sortableColumn property="firstName" title="${message(code: 'user.firstName.label', default: 'First Name')}" />
-					
 						<g:sortableColumn property="lastName" title="${message(code: 'user.lastName.label', default: 'Last Name')}" />
-					
 						<g:sortableColumn property="phoneNumber" title="${message(code: 'user.phoneNumber.label', default: 'Phone Number')}" />
-					
 						<g:sortableColumn property="sha1" title="${message(code: 'user.sha1.label', default: 'Sha1')}" />
-					
 						<th><g:message code="user.address.label" default="Address" /></th>
-					
 						<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${userInstanceList}" status="i" var="userInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
 						<td><g:link action="dashboard" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "firstName")}</g:link></td>
-					
 						<td>${fieldValue(bean: userInstance, field: "lastName")}</td>
-					
 						<td>${fieldValue(bean: userInstance, field: "phoneNumber")}</td>
-					
 						<td>${fieldValue(bean: userInstance, field: "sha1")}</td>
-					
 						<td>${fieldValue(bean: userInstance, field: "address")}</td>
-					
 						<td>${fieldValue(bean: userInstance, field: "username")}</td>
-					
 					</tr>
 				</g:each>
 				</tbody>
