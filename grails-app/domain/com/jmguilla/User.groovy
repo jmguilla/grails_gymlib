@@ -24,28 +24,31 @@ class User {
   boolean passwordExpired = false
   //below oauth entities
   static hasOne = [fbUser:FacebookUser]
-  
+
   //below app specific properties
-  static hasMany = [contents: Content, courses: Course]
+  static hasMany = [contents: Content, coursesTaken: Course]
+
+  static mappedBy = [courses: 'participants']
 
   static constraints = {
+    email(nullable: false, blank: false)
     firstName(nullable: true, size: 1..64)
     lastName(nullable: true, size: 1..64)
     phoneNumber(nullable: true, blank: false)
     sha1(nullable: true, blank: false, unique: true)
     address(nullable: true)
-    username(nullable: true)
+    username(nullable: false)
     password(nullable: false)
     signin(nullable: false)
     birthday(nullable: true)
     fbUser(nullable: true, unique: true)
     contents(nullable: true)
-    courses(nullable: true)
+    coursesTaken(nullable: true)
   }
 
   static mapping = {
     password column: 'password'
-    version false
+    tablePerHierarchy false
   }
 
   Set<Role> getAuthorities() {

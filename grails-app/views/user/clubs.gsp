@@ -6,9 +6,10 @@
 		<meta name="layout" content="main">
 		<title><g:message code="gsp.user.clubs.title" args="[userInstance.username]" /></title>
 		<r:require modules="bootstrap_switch"/>
+		<r:require modules="angular_app"/>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container" ng-app="gymlib" ng-controller="ClubCtrl">
 			<div class="row">
 				<g:render template="nav" model="['activeNav': 'clubs', 'userInstance': userInstance]"/>
 			</div>
@@ -38,7 +39,7 @@
 							 			<button type="submit" class="btn btn-default btn-xs"><g:message code="Edit" default="Edit"/></button>
 							 		</form>	
 							 		<div class="make-switch switch-mini" data-on="primary" data-off="danger" data-on-label="${message(code: 'enabled', default: 'enabled')}" data-off-label="${message(code: 'disabled', default: 'disabled')}">
-									    <input type="checkbox" ${it.enabled? 'checked' : '' }>
+									    <input id="toggleEnabled${it.id}" ng-model="clubs[${it.id}]" ng-click="switchEnabled(${it.id})" type="checkbox" ${it.enabled? 'checked' : ''} disabled>
 									</div>
 							 	</div>
 					 	</div>

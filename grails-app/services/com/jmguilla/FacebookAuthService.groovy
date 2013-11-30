@@ -38,7 +38,7 @@ class FacebookAuthService {
       user.username = fbOAuth.username
       user.firstName = fbOAuth.firstName
       user.lastName = fbOAuth.lastName
-      user.password = password.encodeAsSHA1()
+      user.password = password
       user.email = fbOAuth.email
       user = user.save(flush: true, failOnError: true)
       UserRole.create(user, Role.findByAuthority('ROLE_USER'), true)

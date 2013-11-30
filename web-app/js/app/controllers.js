@@ -23,3 +23,15 @@ app.controller('UserCtrl', function($scope, User) {
 });
 //UserCtrl.$inject = ['$scope', 'User'];
 
+app.controller('ClubCtrl', function($scope, Club) {
+	$scope.switchEnabled = function(id){
+		Club.switchEnabled({id: id}, {},
+		function(value, responseHeaders){
+			
+		},
+		function(httpResponse){
+			
+		});
+	};
+});
+

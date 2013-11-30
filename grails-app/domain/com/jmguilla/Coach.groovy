@@ -1,10 +1,15 @@
 package com.jmguilla
 
+import grails.validation.Validateable;
+
 class Coach extends User{
 
-  static hasMany = [courses: Course]
+  static hasMany = [coursesGiven: Course]
+  
+  static mappedBy = [coursesGiven: 'coach']
 
   static constraints = {
-    courses(nullable: true)
+    importFrom User
+    coursesGiven(nullable: true)
   }
 }

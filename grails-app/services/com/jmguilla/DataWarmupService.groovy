@@ -15,19 +15,19 @@ class DataWarmupService {
     assert Role.count() == 4
 
     def user = null
-    if(!(user = new ClubOwner(username:'jmguilla', password:'jmguilla', email:'guillauj@gmail.com', firstName: 'Jean-Michel', lastName: 'Guillaume', phoneNumber: '+33000000000', sha1: Utils.shortId(), signin: new Date())).save(flush: true, failOnErro: true)){
+    if(!(user = new ClubOwner(username:'jmguilla', password:'jmguilla', email:'guillauj@gmail.com', firstName: 'Jean-Michel', lastName: 'Guillaume', phoneNumber: '+33000000000', sha1: Utils.shortId(), signin: new Date())).save(flush: true, failOnError: true)){
       for(error in user.errors.getAllErrors()){
         //      authUser.errors.getFieldError("email")
         //      println "email already used"
         println error
       }
     }
-    if(!(user = new ClubOwner(username:'manu', password:'manu', email:'ea.dietform@gmail.com', firstName: 'Manu', lastName: 'Ars', phoneNumber: '+33000000000', sha1: Utils.shortId(), signin: new Date())).save(flush: true, failOnErro: true)){
+    if(!(user = new ClubOwner(username:'manu', password:'manu', email:'ea.dietform@gmail.com', firstName: 'Manu', lastName: 'Ars', phoneNumber: '+33000000000', sha1: Utils.shortId(), signin: new Date())).save(flush: true, failOnError: true)){
       for(error in user.errors.getAllErrors()){
         println error
       }
     }
-    assert User.count() == 2
+    assert ClubOwner.count() == 2
 
     for(tmp in User.all){
       UserRole.create(tmp, Role.findByAuthority("ROLE_USER"), true)

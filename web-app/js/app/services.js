@@ -1,7 +1,7 @@
 'use strict';
 /* Services */
 angular.module('gymlibServices', ['ngResource']).
-  factory('User', function($resource){
+factory('User', function($resource){
   return $resource('/gymlib/user/:actionId/:userId.json', {actionId: 'list', userId: '@id'}, {
   	me:{
   		method: 'GET',
@@ -25,5 +25,19 @@ angular.module('gymlibServices', ['ngResource']).
   			'Accept': 'application/json'
   		}
 	  }
+  });
+}).
+factory('Club', function($resource){
+  return $resource('/gymlib/club/:actionId/:clubId.json', {actionId: '', clubId: '@id'}, {
+  	switchEnabled:{
+  		method: 'POST',
+  		params: {
+  			actionId: 'switchEnabled',
+  		},
+  		headers: {
+  			'Content-Type': 'application/json',
+  			'Accept': 'application/json'
+  		}
+  	}
   });
 });
