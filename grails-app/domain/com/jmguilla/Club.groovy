@@ -4,10 +4,10 @@ class Club {
 
   String name
   ClubOwner owner
-  Object gallery
+  Gallery gallery
   boolean enabled = false
 
-  static hasMany = [members: User, courses: Course, comments: Comment, activities: Activity, admins: User]
+  static hasMany = [members: User, coaches: Coach, courses: Course, comments: Comment, activities: Activity, admins: User]
   static belongsTo = [ClubOwner]
 
   static constraints = {
@@ -17,6 +17,7 @@ class Club {
     comments(nullable: true)
     courses(nullable: true)
     admins(nullable: true)
+    coaches(nullable: true)
     gallery(nullable: true)
     enabled(nullable: false)
   }

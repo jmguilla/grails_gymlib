@@ -3,6 +3,18 @@ modules = {
     dependsOn 'bootstrap' 
     resource url: 'css/main.css' 
   }
+  club_show_css{
+    dependsOn 'main_css'
+    resource url: 'css/club.show.css'
+  }
+  user_clubs_css{
+    dependsOn 'main_css'
+    resource url: 'css/user.clubs.css'
+  }
+  club_edit_css{
+    dependsOn 'main_css'
+    resource url: 'css/club.edit.css'
+  }
   auth_css{
     dependsOn 'main_css'
     resource url: 'css/auth.css'

@@ -7,9 +7,10 @@
 		<title><g:message code="gsp.user.clubs.title" args="[userInstance.username]" /></title>
 		<r:require modules="bootstrap_switch"/>
 		<r:require modules="angular_app"/>
+		<r:require modules="user_clubs_css"/>
 	</head>
 	<body>
-		<div class="container" ng-app="gymlib" ng-controller="ClubCtrl">
+		<div class="container" ng-app="gymlib" ng-controller="UserClubsCtrl">
 			<div class="row">
 				<g:render template="nav" model="['activeNav': 'clubs', 'userInstance': userInstance]"/>
 			</div>
@@ -20,7 +21,7 @@
 					<tr>
 					 	<td>
 					 	<a href="${createLink(controller: 'club', action: 'show', id: it.id)}">
-						 	<img src="${(it.gallery?.main)?(it.gallery?.main):'http://lorempixel.com/g/140/140/city/'}" alt="Main image" class="img-thumbnail" />
+						 	<img src="${(it.gallery?.main?.url)?(it.gallery.main.url):'http://lorempixel.com/g/140/140/city/'}" alt="Main image" class="img-thumbnail" />
 					 	</a>
 					 	</td>
 					 	<td>
@@ -39,7 +40,7 @@
 							 			<button type="submit" class="btn btn-default btn-xs"><g:message code="Edit" default="Edit"/></button>
 							 		</form>	
 							 		<div class="make-switch switch-mini" data-on="primary" data-off="danger" data-on-label="${message(code: 'enabled', default: 'enabled')}" data-off-label="${message(code: 'disabled', default: 'disabled')}">
-									    <input id="toggleEnabled${it.id}" ng-model="clubs[${it.id}]" ng-click="switchEnabled(${it.id})" type="checkbox" ${it.enabled? 'checked' : ''} disabled>
+									    <input id="toggleEnabled${it.id}" ng-model="clubs[${it.id}]" ng-click="switchEnabled(${it.id})" type="checkbox" ${it.enabled? 'checked' : ''} >
 									</div>
 							 	</div>
 					 	</div>

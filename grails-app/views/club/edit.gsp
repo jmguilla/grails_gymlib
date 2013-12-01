@@ -3,15 +3,19 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
-		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<title><g:message code="default.edit.label" args="['Club']" /></title>
 		<r:require modules="angular_app"/>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container" ng-app="gymlib" ng-controller="ClubEdit${params.tab}Ctrl" ng-init="init(${clubInstance.id})">
 			<div class="row">
-				<div class="col-md-12">
-					This is where you edit your club's properties, if you belong to the admins or are the owner.
+				<!-- left colum -->
+				<div class="col-md-3">
+					<g:render template="edit_menu" model="['activeMenu': params.tab]"/>
+				</div>
+				<!-- main edit panel -->
+				<div class="col-md-9">
+					<g:render template="edit_panel_${params.tab}" model="['activeMenu': params.tab]"/>
 				</div>
 			</div>
 		</div>

@@ -21,7 +21,7 @@
 <r:layoutResources />
 </head>
 <body>
-	<div class="container">
+	<div class="container bottom-buffer">
 		<div class="row">
 			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 				<!-- Brand and toggle get grouped for better mobile display -->

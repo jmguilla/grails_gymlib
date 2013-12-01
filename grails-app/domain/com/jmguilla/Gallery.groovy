@@ -1,8 +1,17 @@
 package com.jmguilla
 
 class Gallery {
+  
+  String title
+  String description
+  Media main
 
-  String main
+  static hasMany = [medias: Media]
 
-  static constraints = { main(nullable: true) }
+  static constraints = {
+    title(nullable: true, blank: false)
+    description(nullable: true, blank: false)
+    main(nullable: true)
+    medias(nullable: true)
+  }
 }

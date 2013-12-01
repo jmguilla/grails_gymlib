@@ -11,7 +11,8 @@ class User {
   String firstName
   String lastName
   String phoneNumber
-  Date signin
+  String thumbnail
+  Date signin = new Date()
   Date birthday
   Address address
   //below required by authentication plugin
@@ -41,6 +42,7 @@ class User {
     password(nullable: false)
     signin(nullable: false)
     birthday(nullable: true)
+    thumbnail(nullable: true, blank: false)
     fbUser(nullable: true, unique: true)
     contents(nullable: true)
     coursesTaken(nullable: true)

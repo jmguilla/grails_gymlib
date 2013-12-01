@@ -9,6 +9,7 @@
 }
 
 body { padding-top: 50px; }
+
 /* this is used by ng to hide content before the app is fully loaded */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;

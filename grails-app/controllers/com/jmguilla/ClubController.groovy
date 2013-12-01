@@ -8,6 +8,32 @@ class ClubController {
   transient springSecurityService
 
   def index() {
+    def result = Club.get(params.id)
+    try{
+      if(!result){
+        response.status = 404
+        result = new ApiResult(type: 'danger', message: message(code: 'app.api.nosuchobject', args:["Club", params.id], default: "No club with id ${params.id}"))
+      }else{
+        if(params.fields){
+          def club = result
+          result = [:]
+          for(field in params.fields.split(",")){
+            result[field] = club."$field"
+          }
+        }
+      }
+    }catch(Throwable t){
+      response.status = 500
+      result = new ApiResult(type: 'danger', message: "Cannot retrieve club with id: ${params.id} because of ${t}")
+    }
+    withFormat{
+      json{
+        JSON.use("deep"){render(result as JSON)}
+      }
+      html{
+        render(model:[clubInstance: result, view: 'index'])
+      }
+    }
   }
 
   def show() {
@@ -16,9 +42,13 @@ class ClubController {
 
   @Secured(['ROLE_CLUB_ADMIN','ROLE_ADMIN'])
   def edit() {
+    if(!params.tab){
+      params.tab = 'description'
+    }
     render(
         model: [clubInstance: Club.find("from Club as c where c.id = :id and (:currentUser in elements(c.admins) or c.owner = :currentUser)", [id: new Long(params.id), currentUser: springSecurityService.getCurrentUser()])],
-        view: 'edit'
+        view: 'edit',
+        params: params
         )
   }
 
