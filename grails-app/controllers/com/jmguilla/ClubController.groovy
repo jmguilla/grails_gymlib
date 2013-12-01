@@ -78,6 +78,7 @@ class ClubController {
     'ROLE_ADMIN'
   ])
   def updateGallery(){
+    //TODO do some cleanup, persistency problem
     postCallWrapper(request, response, params){ Club club, ApiResult result ->
       def updatedGallery = request.JSON
       Gallery gallery = Gallery.get(club.gallery.id)

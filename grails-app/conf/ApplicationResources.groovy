@@ -1,5 +1,10 @@
 modules = {
   //js
+  dropzone{
+    dependsOn 'jquery'
+    resource url: 'js/lib/dropzone/dropzone.js'
+    resource url: 'js/lib/dropzone/css/dropzone.css'
+  }
   angular{
     dependsOn 'jquery'
     resource url: 'js/lib/angular-1.2.1/angular.js'
@@ -8,6 +13,7 @@ modules = {
   }
   angular_app {
     dependsOn 'angular'
+    dependsOn 'bootstrap_ui'
     resource url:'js/app/services.js'
     resource url:'js/app/app.js'
     resource url:'js/app/controllers.js'

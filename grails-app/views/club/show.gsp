@@ -26,7 +26,7 @@
 					  <!-- Wrapper for slides -->
 					  <div class="carousel-inner">
 					  	<div class="item" ng-repeat="media in club.gallery.medias" data-slide-to="$index" ng-class="{active: club.gallery.main.id==media.id}">
-					  		<img src="{{media.url}}" />
+					  		<img ng-src="{{media.url}}" />
 					  		<div class="carousel-caption">
 					  			<h3>{{media.header}}</h3>
 					  			<p>{{media.description}}</p>
