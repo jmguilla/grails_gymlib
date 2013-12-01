@@ -18,5 +18,6 @@ class Media {
     description(nullable: true, blank: false)
     enabled(nullable: true)
     rank(nullable: false)
+    gallery(nullable: true)
   }
 }
