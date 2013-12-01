@@ -17,10 +17,11 @@
 <title><g:layoutTitle default="Grails" /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <r:require modules="main_css" />
+<r:require modules="angular_app" />
 <g:layoutHead />
 <r:layoutResources />
 </head>
-<body>
+<body ng-app="gymlib" ng-controller="MainCtrl">
 	<div class="container bottom-buffer">
 		<div class="row">
 			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">

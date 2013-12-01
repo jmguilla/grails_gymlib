@@ -40,4 +40,7 @@ factory('Club', function($resource){
   		}
   	}
   });
+}).
+factory('Gallery', function($resource){
+  return $resource('/gymlib/gallery/:actionId/:galleryId.json', {actionId: '', galleryId: '@id'}, {});
 });

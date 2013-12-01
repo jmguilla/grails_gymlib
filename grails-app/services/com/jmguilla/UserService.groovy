@@ -2,6 +2,11 @@ package com.jmguilla
 
 import grails.transaction.Transactional
 
-@Transactional
 class UserService {
+  
+  @Transactional
+  def boolean hasClubAdminRights(Club club, User user){
+    return club.owner.email.equalsIgnoreCase(user.email) ||
+    club.admins.inject(false){acc, val -> acc || val.email.equalsIgnoreCase(user.email)}
+  }
 }

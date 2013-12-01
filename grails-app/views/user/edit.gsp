@@ -17,10 +17,10 @@
 				<g:render template="nav" model="['activeNav': 'profile', 'userInstance': userInstance]"/>
 			</div>
 			<!-- left colum -->
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<g:render template="profile_menu" model="['activeMenu': params.tab]"/>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-10">
 				<g:if test="${params.tab == 'profile'}">
 				<form class="form-horizontal" role="form">
 					<fieldset class="form">

@@ -1,7 +1,33 @@
 modules = {
-  main_css{ 
-    dependsOn 'bootstrap' 
-    resource url: 'css/main.css' 
+  //js
+  angular{
+    dependsOn 'jquery'
+    resource url: 'js/lib/angular-1.2.1/angular.js'
+    resource url: 'js/lib/angular-1.2.1/angular-resource.js'
+    resource url: 'js/lib/angular-1.2.1/angular-route.js'
+  }
+  angular_app {
+    dependsOn 'angular'
+    resource url:'js/app/services.js'
+    resource url:'js/app/app.js'
+    resource url:'js/app/controllers.js'
+    resource url:'js/app/config.js'
+  }
+  
+  //bootstrap and css
+  bootstrap_switch {
+    dependsOn 'bootstrap'
+    resource url: 'js/lib/bootstrap-switch/bootstrap-switch.css'
+    resource url: 'js/lib/bootstrap-switch/bootstrap-switch.js'
+  }
+  bootstrap_ui {
+    dependsOn 'bootstrap'
+    dependsOn 'angular'
+    resource url: 'js/lib/bootstrap-ui-0.7/ui-bootstrap-tpls-0.7.0.js'
+  }
+  main_css{
+    dependsOn 'bootstrap'
+    resource url: 'css/main.css'
   }
   club_show_css{
     dependsOn 'main_css'
@@ -19,23 +45,7 @@ modules = {
     dependsOn 'main_css'
     resource url: 'css/auth.css'
   }
-  application { resource url:'js/application.js' }
-  angular{
-    dependsOn 'jquery'
-    resource url: 'js/lib/angular-1.2.1/angular.js'
-    resource url: 'js/lib/angular-1.2.1/angular-resource.js'
-    resource url: 'js/lib/angular-1.2.1/angular-route.js'
-  }
-  angular_app {
-    dependsOn 'angular'
-    resource url:'js/app/services.js'
-    resource url:'js/app/app.js'
-    resource url:'js/app/controllers.js'
-    resource url:'js/app/config.js'
-  }
-  bootstrap_switch {
-    dependsOn 'bootstrap'
-    resource url: 'js/lib/bootstrap-switch/bootstrap-switch.css'
-    resource url: 'js/lib/bootstrap-switch/bootstrap-switch.js'
+  application {
+    resource url:'js/application.js'
   }
 }
