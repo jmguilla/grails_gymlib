@@ -14,4 +14,8 @@ class Gallery {
     main(nullable: true)
     medias(nullable: true)
   }
+  
+  static mapping = {
+    medias(cascade: "all-delete-orphan")
+  }
 }

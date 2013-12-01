@@ -41,7 +41,10 @@ class ClubController {
     render model:[clubInstance: Club.get(params.id)], view: 'show'
   }
 
-  @Secured(['ROLE_CLUB_ADMIN','ROLE_ADMIN'])
+  @Secured([
+    'ROLE_CLUB_ADMIN',
+    'ROLE_ADMIN'
+  ])
   def edit() {
     if(!params.tab){
       params.tab = 'description'
@@ -53,7 +56,10 @@ class ClubController {
         )
   }
 
-  @Secured(['ROLE_CLUB_ADMIN','ROLE_ADMIN'])
+  @Secured([
+    'ROLE_CLUB_ADMIN',
+    'ROLE_ADMIN'
+  ])
   def switchEnabled(){
     postCallWrapper(request, response, params){ club, result ->
       club.enabled = !club.enabled
@@ -66,25 +72,40 @@ class ClubController {
       }
     }
   }
-  
-  @Secured(['ROLE_CLUB_ADMIN', 'ROLE_ADMIN'])
+
+  @Secured([
+    'ROLE_CLUB_ADMIN',
+    'ROLE_ADMIN'
+  ])
   def updateGallery(){
     postCallWrapper(request, response, params){ Club club, ApiResult result ->
       def updatedGallery = request.JSON
-      bindData(club.gallery, updatedGallery)
+      Gallery gallery = Gallery.get(club.gallery.id)
+      if(!gallery){
+        gallery = new Gallery().save()
+        club.gallery = gallery
+        club.save()
+      }
+      bindData(gallery, updatedGallery)
       for(media in updatedGallery.medias){
+        def toUpdate = Media.get(media.id)
+        if(!toUpdate){
+          toUpdate = new Media(gallery: gallery)
+          gallery.addToMedias(toUpdate)
+        }
+        bindData(toUpdate, media)
         if(media.deleted){
-          def toDelete = Media.get(media.id)
-          club.gallery.removeFromMedias(toDelete)
-          toDelete.delete()
+          gallery.removeFromMedias(toUpdate)
+        }else{
+          toUpdate.save()
         }
       }
-      club.gallery.save()
+      gallery.save(failOnError: true, flush: true)
       result.type = 'success'
       result.content = "ok"
     }
   }
-  
+
   def protected postCallWrapper(request, response, params, impl){
     ApiResult result = null
     if(!request.post){
@@ -101,14 +122,22 @@ class ClubController {
           result = new ApiResult(type: 'danger', content: message(code: "app.api.notallowed", default: "You are not allowed to perform that operation"))
         }else{
           result = new ApiResult()
-          impl(club, result)
+          try{
+            impl(club, result)
+          }catch(ApiException ae){
+            response.status = 401
+            result.type = 'danger'
+            result.content = ae.toString()
+          }catch(Throwable t){
+            response.status = 500
+            result.type = 'danger'
+            result.content = t.toString()
+          }
         }
       }
     }
     withFormat{
-      json{
-        render(result as JSON)
-      }
+      json{ render(result as JSON) }
     }
   }
 }

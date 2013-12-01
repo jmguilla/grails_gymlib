@@ -7,7 +7,7 @@
 </div>
 </div>
 <div class="row">
-	<div class="col-xs-12 col-sm-3 col-md-2" ng-repeat="media in gallery.medias">
+	<div class="col-xs-12 col-sm-3 col-md-2" ng-repeat="media in gallery.medias|orderBy:'rank'">
 		<div class="thumbnail">
 			<button ng-disabled="media.deleted" ng-cloak ng-if="media.enabled == true" popover="${message(code:'gsp.clug.edit.content.disable.tooltip')}" popover-trigger="mouseenter" popover-placement="bottom" class="btn btn-primary btn-xs pull-left" role="button" ng-click="toggleEnabled(media)"><span class="glyphicon glyphicon-pause"></span></button>
 			<button ng-disabled="media.deleted" ng-cloak ng-if="media.enabled == false" popover="${message(code:'gsp.clug.edit.content.enable.tooltip')}" popover-trigger="mouseenter" popover-placement="bottom" class="btn btn-danger btn-xs pull-left" role="button" ng-click="toggleEnabled(media)"><span class="glyphicon glyphicon-play"></span></button>

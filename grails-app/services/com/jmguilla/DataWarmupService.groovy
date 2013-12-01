@@ -45,7 +45,7 @@ class DataWarmupService {
     for(j in 1..3){    
       Gallery gallery = new Gallery(title: "My Gallery $j", description: "My Gallery $j").save(flush: true, failOnError: true)
       for(i in 1..6){
-        Media media = new Media(url: 'http://lorempixel.com/300/300/sports/', header: "A random header ${j}${i}", description: "A random description for a random picture ${j}${i}").save(flush: true, failOnError: true)
+        Media media = new Media(url: 'http://lorempixel.com/300/300/sports/', header: "A random header ${j}${i}", description: "A random description for a random picture ${j}${i}", rank: i, gallery: gallery).save(failOnError: true)
         gallery.addToMedias(media)
         if(i == 1){
           gallery.main = media
