@@ -15,13 +15,13 @@
 			</div>
 			</sec:ifLoggedIn>
 			<div class="row">
-				<div ng-if="imagesLoading" class="col-md-3" id="carousel">
+				<div ng-if="imagesLoading" class="col-md-8" id="carousel">
 					<img src="${createLink(uri: '/images/standardLoading520x520.jpg')}" />
 				</div>
-				<div ng-if="imagesNotLoaded" class="col-md-3" id="carousel" ng-cloak>
+				<div ng-if="imagesNotLoaded" class="col-md-8" id="carousel" ng-cloak>
 					<img src="${createLink(uri: '/images/standardNotAvailable330x330.jpg')}" />
 				</div>
-				<div ng-if="imagesLoaded" class="col-md-3" id="carousel" ng-cloak>
+				<div ng-if="imagesLoaded" class="col-md-8" id="carousel" ng-cloak>
 					<div id="carousel-generic" class="carousel slide" data-ride="carousel">
 					  <!-- Indicators -->
 					  <ol class="carousel-indicators">
@@ -51,7 +51,7 @@
 						See full size and all pictures
 					</div>
 				</div>
-				<div class="col-md-9">
+				<div class="col-md-4">
 					<div class="row">
 						<div class="media" ng-cloak>
 							<span class="pull-left"><img src="{{club.owner.thumbnail}}" alt="Owner thumbnail" class="media-object img-thumbnail"/></span>
