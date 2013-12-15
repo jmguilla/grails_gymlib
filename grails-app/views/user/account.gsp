@@ -1,4 +1,4 @@
-<%@ page import="com.jmguilla.User" %>
+<%@ page import="com.jmguilla.gymlib.User" %>
 <!DOCTYPE html>
 <html>
 	<head>

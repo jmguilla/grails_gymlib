@@ -1,4 +1,4 @@
-<%@ page import="com.jmguilla.User"%>
+<%@ page import="com.jmguilla.gymlib.User"%>
 <%@ page import="grails.plugins.springsecurity.SpringSecurityService"%>
 
 <g:set var="springSecurityService" bean="springSecurityService" />

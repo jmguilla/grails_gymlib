@@ -1,4 +1,4 @@
-<%@ page import="com.jmguilla.Club" %>
+<%@ page import="com.jmguilla.gymlib.Club" %>
 <ul class="nav nav-pills nav-stacked">
 	<li class="${activeMenu == 'description' ? 'active' : '' }"><a href="${createLink(controller: 'club', action: 'edit', id: clubInstance.id, params: [tab: 'description']) }"><span><g:message
 					code="gsp.club.edit.menu.description.label" default="Description" /></span></a></li>

@@ -1,4 +1,4 @@
-<%@ page import="com.jmguilla.User" %>
+<%@ page import="com.jmguilla.gymlib.User" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,10 +9,7 @@
 	</head>
 	<body>
 		<div class="container" ng-app="gymlib" ng-controller="UserCtrl">
-			<div ng-cloak ng-repeat="alert in alerts" class="alert alert-{{alert.type}} alert-dismissable">
-				<button ng-click="closeAlert($index)" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				{{alert.content}}
-			</div>
+			<g:render template="/alerts"/>
 			<div class="row">
 				<g:render template="nav" model="['activeNav': 'profile', 'userInstance': userInstance]"/>
 			</div>

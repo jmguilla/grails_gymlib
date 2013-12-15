@@ -1,4 +1,4 @@
-<%@ page import="com.jmguilla.User" %>
+<%@ page import="com.jmguilla.gymlib.User" %>
 <div class="panel panel-default">
 	<div class="panel-heading"><g:message code="gsp.user.profile.edit.mandatory.label" default="Mandatory" /></div>
 	<div class="panel-body">
@@ -74,7 +74,7 @@
 		<g:message code="user.address.label" default="Address" />
 		
 	</label>
-	<g:select id="address" name="address.id" from="${com.jmguilla.Address.list()}" optionKey="id" value="${userInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="address" name="address.id" from="${com.jmguilla.gymlib.Address.list()}" optionKey="id" value="${userInstance?.address?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'username', 'error')} ">
@@ -98,7 +98,7 @@
 		<g:message code="user.fbUser.label" default="Fb User" />
 		
 	</label>
-	<g:select id="fbUser" name="fbUser.id" from="${com.jmguilla.oauth.FacebookUser.list()}" optionKey="id" value="${userInstance?.fbUser?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="fbUser" name="fbUser.id" from="${com.jmguilla.gymlib.oauth.FacebookUser.list()}" optionKey="id" value="${userInstance?.fbUser?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">

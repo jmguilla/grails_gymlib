@@ -1,4 +1,4 @@
-<%@ page import="com.jmguilla.User" %>
+<%@ page import="com.jmguilla.gymlib.User" %>
 <ul class="nav nav-pills nav-stacked">
 	<li class="${activeMenu == 'profile' ? 'active' : '' }">
 		<!-- TODO internationalization --> <a href="${createLink(controller: 'user', action: 'edit', id: userInstance.id, params: [tab: 'profile']) }"><span><g:message

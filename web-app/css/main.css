@@ -10,11 +10,6 @@
 
 body { padding-top: 50px; }
 
-/* this is used by ng to hide content before the app is fully loaded */
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
-}
-
 a.navbar-brand {
 	color: #428bca !important;
 }
@@ -31,3 +26,24 @@ a.navbar-brand {
 
 .caption {text-align:center;}
 
+/* angularjs animation */
+.slide.ng-move,
+.slide.ng-enter,
+.slide.ng-leave {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.slide.ng-leave.ng-leave-active,
+.slide.ng-move,
+.slide.ng-enter {
+  opacity:0;
+  max-height:0;
+}
+
+.slide.ng-leave,
+.slide.ng-move.ng-move-active,
+.slide.ng-enter.ng-enter-active {
+  opacity:1;
+  max-height:40px;
+}

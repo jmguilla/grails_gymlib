@@ -1,4 +1,4 @@
-<%@ page import="com.jmguilla.User" %>
+<%@ page import="com.jmguilla.gymlib.User" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,6 +9,11 @@
 	</head>
 	<body>
 		<div class="container" ng-app="gymlib" ng-controller="ClubShowCtrl" ng-init="init(${clubInstance.id})">
+			<sec:ifLoggedIn roles="ROLE_CLUB_ADMIN">
+			<div class="row">
+				<g:render template="/user/nav" model="['userInstance': userInstance]"/>
+			</div>
+			</sec:ifLoggedIn>
 			<div class="row">
 				<div ng-if="imagesLoading" class="col-md-3" id="carousel">
 					<img src="${createLink(uri: '/images/standardLoading520x520.jpg')}" />

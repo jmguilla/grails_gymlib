@@ -1,4 +1,4 @@
-import com.jmguilla.User
+import com.jmguilla.gymlib.User
 
 
 class BootStrap {
@@ -8,7 +8,7 @@ class BootStrap {
 
   def init = { servletContext ->
 
-    new com.jmguilla.ExpandoLoader().load()
+    new com.jmguilla.gymlib.ExpandoLoader().load()
     //TODO change datawarmupservice for static utils
     dataWarmupService.dev()
   }

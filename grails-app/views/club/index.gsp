@@ -1,4 +1,4 @@
-<%@ page import="com.jmguilla.Club, com.jmguilla.Activity" %>
+<%@ page import="com.jmguilla.gymlib.Club, com.jmguilla.gymlib.Activity" %>
 <!DOCTYPE html>
 <html>
 	<head>

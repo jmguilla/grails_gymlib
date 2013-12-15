@@ -1,5 +1,5 @@
-<%@ page import="com.jmguilla.User" %>
-<%@ page import="com.jmguilla.Club" %>
+<%@ page import="com.jmguilla.gymlib.User" %>
+<%@ page import="com.jmguilla.gymlib.Club" %>
 <!DOCTYPE html>
 <html>
 	<head>
